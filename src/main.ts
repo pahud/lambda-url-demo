@@ -39,7 +39,9 @@ const devEnv = {
 
 const app = new App();
 
-new MyStack(app, 'lambda-url-demo-dev', { env: devEnv });
+const stackName = app.node.tryGetContext('stackName') || 'lambda-url-demo-test';
+
+new MyStack(app, stackName, { env: devEnv });
 // new MyStack(app, 'lambda-url-demo-prod', { env: prodEnv });
 
 app.synth();
